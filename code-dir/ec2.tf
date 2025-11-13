@@ -67,11 +67,20 @@ resource "aws_security_group" "my_security_group" {
 
 resource "aws_instance" "my_instance" {
 
-    # for creating multiple instances using ec2.tf terraform file
-    count = 3
+    # Creating multi-instances using count
+    # count = 3
+    # Creating multi-instances using for_each
+    for_each = tomap ({
+        InstanceA = "t2.micro",
+        InstanceB = "t2.medium"
+        # instanceA and instanceB tells that create 2 instances
+    })
+    depends_on = [aws_security_group.my_security_group,aws_key_pair.my_key]
     key_name = aws_key_pair.my_key.key_name
     security_groups = [aws_security_group.my_security_group.name]
-    instance_type = var.ec2_instance_type
+    # Use below, when count is used
+    #instance_type = var.ec2_instance_type
+    instance_type = each.value
     ami = var.ec2_ami_id
     user_data = file("install_nginx.sh")
     root_block_device = {
@@ -81,7 +90,9 @@ resource "aws_instance" "my_instance" {
     }
 
     tags = {
-        Name = "Terraform_Automated_Instance"
+        # Name = "Terraform_Automated_Instance"
+        Name = each.key
+        Environment = var.env
     }
 
 }
