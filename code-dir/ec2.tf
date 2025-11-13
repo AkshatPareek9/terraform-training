@@ -75,6 +75,7 @@ resource "aws_ec2_instance" "my_instance" {
     root_block_device = {
         volume_size=15
         volume_type="gp3"
+        #gp = general purpose
     }
 
     tags = {
