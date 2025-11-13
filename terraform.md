@@ -40,6 +40,13 @@ resource resource_type resource_name {
     -- resource_args --    
 }    
 
+**Accepted value for \<block\>**    
+    1. for infrastructure: resource    
+    2. for output: output    
+    3. for variable: variable    
+    4. for provider: provider    
+    5. for terraform: terraform    
+
 ---
 
 **Terraform providers**
