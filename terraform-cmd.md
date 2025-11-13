@@ -39,4 +39,7 @@
 
   # Remove if no need to maintain the state of the particular
   terraform state rm aws_key_pair.my_key
+
+  # Command to maintain the state again
+  terraform state aws_key_pair.my_key \<key_id\>
 ```
