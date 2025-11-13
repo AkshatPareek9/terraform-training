@@ -10,7 +10,7 @@
   # Telling the client what change will be happen on apply
   terraform plan  
 
-  # Apply the terraform configuration
+  # Apply the terraform configuration and this generates terraform.tfstate file
   terraform apply  
 
   # Store the planned output in a file
