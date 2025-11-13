@@ -27,4 +27,16 @@
   # Destory using output file
   terraform plan -destroy -out "destroy.txt"
   terraform apply "destroy.txt"
+
+  # Terraform state refresh
+  terraform refresh
+
+  # Terraform state list
+  terraform state list
+
+  # Terraform show the state
+  terraform state show aws_key_pair.my_key
+
+  # Remove if no need to maintain the state of the particular
+  terraform state rm aws_key_pair.my_key
 ```
