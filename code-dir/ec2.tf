@@ -10,14 +10,14 @@
 # Key Pair
 resource "aws_key_pair" "my_key" {
     key_name = "terraform-ec2-key"
-    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD3F6tyPEFEzV0LX3X8BsXdMsQz1x2cEikKDEY0aIj41qgxMCP/iteneqXSIFZBp5vizPvaoIR3Um9xK7PGoW8giupGn+EPuxIA4cDM4vzOqOkiMPhz5XK0whEjkVzTo4+S0puvDZuwIsdiW9mxhJc7tgBNL0cYlWSYVkz4G/fslNfRPW5mYAM49f4fhtxPb5ok4Q2Lg9dPKVHO/Bgeu5woMc7RY0p1ej6D4CKFE6lymSDJpW0YHX/wqE9+cfEauh7xZcG0q9t2ta6F6fmX0agvpFyZo8aFbXeUBr7osSCJNgvavWbM/06niWrOvYX2xwWdhXmXSrbX8ZbabVohBK41 email@example.com"
+    public_key = file("terraform-ec2-key.pub")
 }
 
 # VPC
 resource "aws_default_vpc" "my_vpc" {
 }
 
-resource "aws_security_group" my_security_group {
+resource "aws_security_group" "my_security_group" {
 
     name = "terraform-security-group"
     description = "This is my automated terraform security group"
@@ -65,19 +65,20 @@ resource "aws_security_group" my_security_group {
     }
 }
 
-resource aws_ec2_instance my_instance {
+resource "aws_ec2_instance" "my_instance" {
 
     key_name = aws_key_pair.my_key.key_name
     security_groups = [aws_security_group.my_security_group.name]
     instance_type = t2.micro
     ami = "ami-ag34bdfh6bh8324324fghdw4g5"
+    user_data = file("install_nginx.sh")
     root_block_device = {
         volume_size=15
         volume_type="gp3"
     }
 
     tags = {
-        Name = Terraform_Automated_Instance
+        Name = "Terraform_Automated_Instance"
     }
 
 }
