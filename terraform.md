@@ -22,13 +22,13 @@ It ensures consistency, scalability, and easy automation of infrastructure.
 Field Engineer -> Network Engineer -> Storage Engineer -> Backup Engineer -> Application Team  
 |--------------------------- Replaced by Terraform -------------------------------|  
 
-**Basic Syntax of terraform file**
-<block> <parameters> {
-    <arguments>
-}
+**Basic Syntax of terraform file**    
+\<block\> \<parameters\> {    
+    \<arguments\>    
+}    
 
-*Example*
-resource local_file myfile {
-    filename = "example.txt"
-    content = "This is an example."
-}
+*Example*    
+resource local_file myfile {    
+    filename = "example.txt"    
+    content = "This is an example."    
+}    
