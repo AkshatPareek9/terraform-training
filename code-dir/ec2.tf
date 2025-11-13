@@ -67,6 +67,8 @@ resource "aws_security_group" "my_security_group" {
 
 resource "aws_instance" "my_instance" {
 
+    # for creating multiple instances using ec2.tf terraform file
+    count = 3
     key_name = aws_key_pair.my_key.key_name
     security_groups = [aws_security_group.my_security_group.name]
     instance_type = var.ec2_instance_type
