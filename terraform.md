@@ -44,4 +44,23 @@ resource resource_type resource_name {
 
 **Terraform providers**
 - local is the default provider.    
-- aws is the generated provider.    
+- aws is the generated provider.
+
+---
+
+**Install AWS CLI**    
+
+aws cli - utility allows the machine to connect with aws account    
+
+```bash
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"    
+unzip awscliv2.zip    
+sudo ./aws/install    
+aws --version
+
+aws configure
+    AWS Access Key ID:
+    AWS Secret Access Key:
+    Default region name:
+    Default output format:
+```
