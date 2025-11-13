@@ -22,6 +22,8 @@ It ensures consistency, scalability, and easy automation of infrastructure.
 Field Engineer -> Network Engineer -> Storage Engineer -> Backup Engineer -> Application Team  
 |--------------------------- Replaced by Terraform -------------------------------|  
 
+---
+
 **Basic Syntax of terraform file**    
 \<block\> \<parameters\> {    
     \<arguments\>    
@@ -32,3 +34,14 @@ resource local_file myfile {
     filename = "example.txt"    
     content = "This is an example."    
 }    
+
+*Explaining the example*    
+resource resource_type resource_name {    
+    -- resource_args --    
+}    
+
+---
+
+**Terraform providers**
+- local is the default provider.    
+- aws is the generated provider.    
