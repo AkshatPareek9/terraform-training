@@ -17,5 +17,13 @@
   terraform plan -out "output.txt"  
 
   # Apply the terraform configuration and made only those changes which is written in output.txt
-  terraform apply "output.txt"  
+  terraform apply "output.txt"
+
+  # Destroy
+  terraform destroy
+  terraform destroy -auto-approve
+
+  # Destory using output file
+  terraform plan -destroy -out "destory.txt"
+  terraform apply "destroy.txt"
 ```
