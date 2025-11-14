@@ -44,14 +44,15 @@ resource resource_type resource_name {
     1. for infrastructure: resource    
     2. for output: output    
     3. for variable: variable    
-    4. for provider: provider    
-    5. for terraform: terraform    
+    4. for region: provider    
+    5. for add required_provider: terraform   
+    6. for module: module
 
 ---
 
 **Terraform providers**
-- local is the default provider.    
-- aws is the generated provider.
+- local is the default provider
+- aws is the new added provider using terraform.tf
 
 ---
 
