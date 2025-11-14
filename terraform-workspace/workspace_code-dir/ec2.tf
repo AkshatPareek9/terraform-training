@@ -9,8 +9,11 @@
 
 # Key Pair
 resource "aws_key_pair" "my_key" {
-    key_name = "terraform-ec2-key"
+    key_name = "${var.env}-terraform-ec2-key"
     public_key = file("terraform-ec2-key.pub")
+    tags = {
+        Environment = var.env
+    }
 }
 
 # VPC
@@ -19,7 +22,7 @@ resource "aws_default_vpc" "my_vpc" {
 
 resource "aws_security_group" "my_security_group" {
 
-    name = "terraform-security-group"
+    name = "${var.env}-terraform-security-group"
     description = "This is my automated terraform security group"
     vpc_id = aws_default_vpc.my_vpc.id        # interpolation
 
@@ -61,7 +64,7 @@ resource "aws_security_group" "my_security_group" {
     }
 
     tags = {
-        Name = "terraform-security-group"
+        Name = "${var-env}-terraform-security-group"
     }
 }
 
@@ -92,7 +95,7 @@ resource "aws_instance" "my_instance" {
 
     tags = {
         # Name = "Terraform_Automated_Instance"
-        Name = each.key
+        Name = ${var.env}-each.key
         Environment = var.env
     }
 
